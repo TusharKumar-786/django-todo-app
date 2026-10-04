@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add Task
+{% endblock %}
+
+{% block content %}
+<style>
+    .add-form{
+        margin-top: 20px;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        align-items: center;
+    }
+        .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+    }
+
+    .form-group textarea {
+        height: 100px;
+        resize: vertical;
+    }
+
+    .submit-btn{
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: #0d6efd;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .submit-btn:hover {
+        background: #0b5ed7;
+    }
+</style>
+<body>
+    <form class="add-form"
+        method="post"
+        enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label >Title</label>
+            <input type="text" name="title" required placeholder="Title">
+        </div>
+
+        <div class="form-group">
+            <label >Description</label>
+            <textarea name="description" required placeholder="Description"> </textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Completed</label>
+            <input type="checkbox" name="completed">
+        </div>
+
+        <div class="form-group">
+            <label>Due Date</label>
+            <input type="date" name="due_date" value="{% now 'Y-m-d' %}" >
+        </div>
+
+        <div class="form-group">
+            <label>Priority</label>
+            <select name="priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Add Task </button>
+        </form>
+</body>
+</html>
+
+{% endblock %}

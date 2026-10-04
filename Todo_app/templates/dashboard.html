@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<style>
+        .text-user {
+        text-align: left;
+        font-size: 31px;
+    }
+
+    .search-container {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .search-box {
+        width: 330px;
+        height: auto;
+        padding: 10px 12px;
+        border: 1px solid black;
+        border-radius: 8px;
+        outline: none;
+        font-size: 15px;
+        font-weight: bold;
+
+    }
+
+    .search-box::placeholder {
+        color: grey;
+    }
+
+    .search-box:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
+    }
+
+    .search-btn {
+        padding: 10px 18px;
+        margin-left: 5px;
+        border: none;
+        border-radius: 6px;
+        background: #0d6efd;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+    }
+
+    .search-btn:hover {
+        background: #0b5ed7;
+    }
+
+    .table-content {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid #333;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .check-box {
+        width: 20px;
+        height: 20px;
+        accent-color: rgb(53, 98, 196);
+        cursor: pointer;
+
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .update-btn {
+        display: inline-block;
+        padding: 6px 12px;
+        background-color: rgb(21, 194, 21);
+        color: white;
+        text-decoration: none;
+        border-radius: 7px;
+        font-size: 15px;
+    }
+
+    .delete-btn {
+        display: inline-block;
+        padding: 6px 12px;
+        background-color: rgb(230, 28, 28);
+        color: white;
+        text-decoration: none;
+        border-radius: 7px;
+        margin-left: 6px;
+        font-size: 15px;
+    }
+
+    .update-btn:hover,
+    .delete-btn:hover {
+        opacity: 0.8;
+    }
+</style>
+<h2 class="text-user">Welcome {{request.user.username}}</h2>
+<div class="form-container">
+
+    <div class="search-container">
+        <form method="get">
+            <input type="text" name="search" class="search-box" placeholder="Search Task">
+            <button type="submit" class="search-btn">Search</button>
+        </form>
+    </div>
+    <table class="table-content">
+        <thead>
+            <tr>
+                <th scope="col">Sr No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description </th>
+                <th scope="col">Priority</th>
+                <th scope="col">Completed</th>
+                <th scope="col">Due_date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in todo %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+
+                <td>{{ i.title }}</td>
+
+                <td>{{ i.description }}</td>
+
+                <td>{{ i.priority }}</td>
+
+                <td>
+                    <form method="POST" action="{% url 'update_completed' i.id %}">
+                        {% csrf_token %}
+
+                        <input class ='check-box' type="checkbox" onchange="this.form.submit()" {% if i.completed %}checked{% endif %}>
+                    </form>
+                </td>
+
+                <td>{{ i.due_date }}</td>
+
+                <td>
+                    <a href="{% url 'update_todo' i.id %}" class="update-btn">
+                        Update
+                    </a>
+
+                    <a href="{% url 'delete_todo' i.id %}" class="delete-btn">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .message-container {
+    width: 450px;
+    margin: 20px auto;
+}
+
+    .message {
+        padding: 12px 15px;
+        margin-bottom: 10px;
+        background-color: #d1e7dd;
+        color: #0f5132;
+        border: 1px solid #badbcc;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: 500;
+    }
+    .register-container {
+        width: 450px;
+        margin: 60px auto;
+    }
+
+    .register-form {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .register-form h2 {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: bold;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    .form-group input:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
+    }
+
+    .register-btn {
+        width: 100%;
+        padding: 11px;
+        border: none;
+        border-radius: 6px;
+        background: #0d6efd;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .register-btn:hover {
+        background: #0b5ed7;
+    }
+
+    .login-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .login-link a {
+        color: #0d6efd;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<body>
+    <h1 style="text-align: center;">Register Page</h1>
+    {% if messages %}
+    <div class="message-container">
+        {% for mess in messages %}
+        <div class="message">
+            {{mess}}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endif %}
+    <div class="register-container">
+
+    <form class="register-form" method="post">
+
+        {% csrf_token %}
+
+        <h2>Create Account</h2>
+
+        <div class="form-group">
+            <label>Username</label>
+
+            <input
+                type="text"
+                name="username"
+                required
+                placeholder="Enter username">
+        </div>
+
+
+        <div class="form-group">
+            <label>Email</label>
+
+            <input
+                type="email"
+                name="email"
+                required
+                placeholder="Enter email">
+        </div>
+
+
+        <div class="form-group">
+            <label>Password</label>
+
+            <input
+                type="password"
+                name="password"
+                required
+                placeholder="Enter password">
+        </div>
+
+
+        <button type="submit" class="register-btn">
+            Register
+        </button>
+
+
+        <div class="login-link">
+            Already have an account?
+            <a href="{% url 'login_page' %}">Login</a>
+        </div>
+
+    </form>
+
+</div>
+
+
+</body>
+</html>

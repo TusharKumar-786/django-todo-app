@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
+</head>
+<style>
+    .message-container {
+    width: 450px;
+    margin: 20px auto;
+    }
+
+    .message {
+        padding: 12px 15px;
+        margin-bottom: 10px;
+        background-color: #d1e7dd;
+        color: #0f5132;
+        border: 1px solid #badbcc;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: 500;
+    }
+    .login-container {
+        width: 400px;
+        margin: 80px auto;
+    }
+
+    .login-form {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .login-form h2 {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: bold;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    .form-group input:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
+    }
+
+    .login-btn {
+        width: 100%;
+        padding: 11px;
+        border: none;
+        border-radius: 6px;
+        background: #0d6efd;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .login-btn:hover {
+        background: #0b5ed7;
+    }
+
+    .forgot-password {
+        text-align: right;
+        margin-bottom: 20px;
+    }
+
+    .forgot-password a {
+        color: #0d6efd;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .forgot-password a:hover {
+        text-decoration: underline;
+    }
+
+    .signup-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .signup-link a {
+        color: #0d6efd;
+        text-decoration: none;
+        font-weight: bold;
+    }
+</style>
+
+<body>
+    <h1 style="text-align: center;">Login Page</h1>
+{% if messages %}
+    <div class="message-container">
+
+        {% for message in messages %}
+
+            <div class="message">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+    </div>
+{% endif %}
+
+<div class="login-container">
+
+    <form class="login-form" method="post">
+
+        {% csrf_token %}
+
+        <h2>Login</h2>
+
+        <div class="form-group">
+            <label>Username</label>
+
+            <input
+                type="text"
+                name="username"
+                required
+                placeholder="Enter your username">
+        </div>
+
+
+        <div class="form-group">
+            <label>Password</label>
+
+            <input
+                type="password"
+                name="password"
+                required
+                placeholder="Enter your password">
+        </div>
+
+
+        <div class="forgot-password">
+            <a href="#">Forgot Password?</a>
+        </div>
+
+
+        <button type="submit" class="login-btn">
+            Login
+        </button>
+
+
+        <div class="signup-link">
+            Don't have an account?
+            <a href="register">Create Account</a>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
+
+
+
+

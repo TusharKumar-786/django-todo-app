@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Todo App{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    {% block extra_css %}
+    {% endblock %}
+</head>
+
+<body>
+
+    <div class="div-container">
+        <h2>Todo App</h2>
+
+        <nav class="nav-bar">
+            <a href="/dashboard/">Dashboard</a>
+            <a href="/add/">Add Task</a>
+            <a href="/logout/">Logout</a>
+        </nav>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
