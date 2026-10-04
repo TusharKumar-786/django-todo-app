@@ -1,60 +1,60 @@
-# 📝 Django Todo App
+## 📌 About the Project
 
-A simple and responsive Todo Management web application built with **Django**.  
-Users can create, update, delete, search, prioritize, and track their daily tasks through a clean dashboard.
+Django Todo App is a web-based task management application that allows
+authenticated users to manage their daily tasks efficiently.
 
-## 🚀 Features
+Users can create, update, delete, search, prioritize, and track the
+completion status of their tasks from a centralized dashboard.
 
-- 🔐 User Registration & Login
-- ➕ Create new tasks
-- ✏️ Update existing tasks
-- 🗑️ Delete tasks
-- ✅ Mark tasks as completed
-- 🔍 Search tasks
-- ⭐ Task priority management
-- 📅 Due date support
-- 👤 User-specific tasks
-- 📱 Responsive user interface
-- 🎨 Custom CSS styling
-- 🗄️ SQLite database for local development
+## 📸 Screenshots
 
-## 🛠️ Tech Stack
+### Login
+![Login](screenshots/login.png)
 
-| Technology | Purpose |
-|---|---|
-| Python | Backend programming |
-| Django | Web framework |
-| HTML5 | Page structure |
-| CSS3 | Styling & responsive UI |
-| JavaScript | Client-side interactions |
-| SQLite | Development database |
-| Git & GitHub | Version control |
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
 
-## 📂 Project Structure
+### Add Todo
+![Add Todo](screenshots/add-todo.png)
 
-```text
-Todo_App/
-│
-├── Todo_app/
-│   ├── migrations/
-│   ├── static/
-│   │   ├── css/
-│   │   └── js/
-│   ├── templates/
-│   ├── admin.py
-│   ├── forms.py
-│   ├── models.py
-│   ├── urls.py
-│   ├── views.py
-│   └── tests.py
-│
-├── config/
-│   ├── settings.py
-│   ├── urls.py
-│   ├── asgi.py
-│   └── wsgi.py
-│
-├── manage.py
-├── requirements.txt
-├── README.md
-└── .gitignore
+## ⚙️ Installation & Setup
+
+### Clone the repository
+
+git clone https://github.com/TusharKumar-786/django-todo-app.git
+
+### Navigate into the project
+
+cd django-todo-app
+
+### Create virtual environment
+
+python3 -m venv venv
+
+### Activate virtual environment
+
+source venv/bin/activate
+
+### Install dependencies
+
+pip install -r requirements.txt
+
+### Apply migrations
+
+python manage.py migrate
+
+### Create superuser
+
+python manage.py createsuperuser
+
+### Run development server
+
+python manage.py runserver
+
+## 👨‍💻 Author
+
+### Tushar Kumar
+
+B.Tech Computer Science & Engineering
+
+GitHub: @TusharKumar-786
